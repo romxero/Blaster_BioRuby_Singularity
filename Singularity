@@ -14,8 +14,10 @@ Author "Randall Cab White - rcwhite@stanford.edu"
 	apt-get -ym install wget curl gnupg2
 	apt-get -ym install git cmake build-essential
 
-###
+#making the software cache dir
 	mkdir -p /software_cache
+
+#changing directory
 	cd /software_cache
 	
 #Getting RVM 
@@ -30,8 +32,8 @@ Author "Randall Cab White - rcwhite@stanford.edu"
 	make
 	make install
 
-###
-	mkdir -p /software_cache
+
+#changing directory
 	cd /software_cache
 
 #bioruby download
@@ -40,22 +42,21 @@ Author "Randall Cab White - rcwhite@stanford.edu"
 	cd bioruby-1.5.2
 	ruby setup.rb
 
-###
-	mkdir -p /software_cache
+#changing directory
 	cd /software_cache
 
 
-wget https://github.com/rubygems/rubygems/archive/v1.8.30.tar.gz
-tar zxvf v1.8.30.tar.gz 
-cd rubygems-1.8.30/
-ruby setup.rb 
+#Grab RubyGems 1.8
+	wget https://github.com/rubygems/rubygems/archive/v1.8.30.tar.gz
+	tar zxvf v1.8.30.tar.gz 
+	cd rubygems-1.8.30/
+	ruby setup.rb 
 
-
-
+%runscript
+	exec /usr/local/bin/ruby "$@"
 
 %environment
 	export IMAGE_NAME="BioRuby"
-	source /etc/profile.d/rvm.sh
 
 
 
